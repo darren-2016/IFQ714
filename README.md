@@ -7,4 +7,13 @@ Experimenting with declaration of variables, use of operators on numbers, string
 ## Code Play 4
 Experimenting with properties and methods, and creating new objects.
 
+## Code Play 5
+Experimenting with JavaScript Object Notation (JSON).
+
+## Code Play 6
+Experimenting with functions, scope, constructors and methods.
+
 ## Module 1 Workshop
+
+## Module 2 Workshop
+
