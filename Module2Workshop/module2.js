@@ -14,19 +14,12 @@ console.log(sale1);
 // Step 2
 // Function to output formatted version of the employee info
 function showEmployeeInfo(employee) {
-    console.log(`Name: ${employee.firstName} ${employee.lastName}\n
-                 Staff ID: ${employee.id}\n
-                 Gender: ${employee.gender}\n
-                 Age: ${employee.age}\n
-                 Position: ${employee.position}`);
+    console.log(`Name: ${employee.firstName} ${employee.lastName}\nStaff ID: ${employee.id}\nGender: ${employee.gender}\nAge: ${employee.age}\nPosition: ${employee.position}`);
 }
 
 // Function to output formatted version of the sale info
 function showSaleInfo(sale) {
-    console.log(`Item: ${sale.item}\n
-                 Price: ${sale.price}\n
-                 Date of sale: ${sale.date}\n
-                 ID of Staff Member: ${sale.staffId}`);
+    console.log(`Item: ${sale.item}\nPrice: ${sale.price}\nDate of sale: ${sale.date}\nID of Staff Member: ${sale.staffId}`);
 }
 
 showEmployeeInfo(employee1);
@@ -43,7 +36,11 @@ function Employee(id, firstName, lastName, gender, age, position) {
     this.position = position;
 
     this.showInfo = function() {
-        console.log (`Name: ${this.firstName} ${this.lastName}\nStaff ID: ${this.id}\nGender: ${this.gender}\nAge: ${this.age}\nPosition: ${this.position}`);
+        showEmployeeInfo(this);
+    }
+
+    this.toString = function() {
+        return `Name: ${this.firstName} ${this.lastName}\nStaff ID: ${this.id}\nGender: ${this.gender}\nAge: ${this.age}\nPosition: ${this.position}`;
     }
 }
 
@@ -55,7 +52,11 @@ function Sale(staffId, item, price, date) {
     this.date = date;
 
     this.showInfo = function() {
-        console.log(`Item: ${this.item}\nPrice: ${this.price}\nDate of sale: ${this.date}\nID of Staff Member: ${this.staffId}`);
+        showSaleInfo(this);
+    }
+
+    this.toString = function() {
+        return `Item: ${this.item}\nPrice: ${this.price}\nDate of sale: ${this.date}\nID of Staff Member: ${this.staffId}`;
     }
 }
 
@@ -65,6 +66,7 @@ let employee2 = new Employee(2, "Mary", "Sue", "Female", 32, "Salesperson");
 
 // Create a new sale
 let sale2 = new Sale(1, "Wi-Fi Adapter", 40.00, "03-09-2022");
+
 
 // Step 4
 // Create arrays for the employee and sale objects
@@ -79,3 +81,6 @@ console.log(sales);
 // Bonus tasks
 employee2.showInfo();
 sale2.showInfo();
+
+console.log(employee2.toString());
+console.log(sale2.toString());
