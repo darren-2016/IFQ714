@@ -58,6 +58,13 @@ function Sale(staffId, item, price, date) {
     this.toString = function() {
         return `Item: ${this.item}\nPrice: ${this.price}\nDate of sale: ${this.date}\nID of Staff Member: ${this.staffId}`;
     }
+
+    this.dayOfWeek = function() {
+        const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const date = new Date(this.date);
+
+        return weekday[date.getDay()];
+    }
 }
 
 // Create a new employee
@@ -84,3 +91,4 @@ sale2.showInfo();
 
 console.log(employee2.toString());
 console.log(sale2.toString());
+console.log(sale2.dayOfWeek());
