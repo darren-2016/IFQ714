@@ -31,6 +31,10 @@ function Employee(id, firstName, lastName, gender, age, position) {
     this.gender = gender;
     this.age = age;
     this.position = position;
+
+    this.showInfo = function() {
+        console.log (`Name: ${this.firstName} ${this.lastName}\nStaff ID: ${this.id}\nGender: ${this.gender}\nAge: ${this.age}\nPosition: ${this.position}`);
+    }
 }
 
 // Constructor to define a new sale
@@ -39,10 +43,15 @@ function Sale(staffId, item, price, date) {
     this.item = item;
     this.price = price;
     this.date = date;
+
+    this.showInfo = function() {
+        console.log(`Item: ${this.item}\nPrice: ${this.price}\nDate of sale: ${this.date}\nID of Staff Member: ${this.staffId}`);
+    }
 }
 
 // Create a new employee
 let employee2 = new Employee(2, "Mary", "Sue", "Female", 32, "Salesperson");
+
 
 // Create a new sale
 let sale2 = new Sale(1, "Wi-Fi Adapter", 40.00, "03-09-2022");
@@ -53,3 +62,6 @@ let sales = [sale1, sale2];
 
 console.log(employees);
 console.log(sales);
+
+employee2.showInfo();
+sale2.showInfo();
