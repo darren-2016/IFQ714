@@ -29,7 +29,11 @@ let Sales = JSON.parse(salesData);
 
 // Function to output formatted version of the employee info
 function showEmployeeInfo(employee) {
-   console.log(`Name: ${employee.firstName} ${employee.lastName}\nStaff ID: ${employee.id}\nGender: ${employee.gender}\nAge: ${employee.age}\nPosition: ${employee.position}`);
+   if (employee === null) {
+      console.log("Employee object not found");
+   } else {
+      console.log(`Name: ${employee.firstName} ${employee.lastName}\nStaff ID: ${employee.id}\nGender: ${employee.gender}\nAge: ${employee.age}\nPosition: ${employee.position}`);
+   }
 }
 
 // Function to traverse all the employees and show information for each
@@ -40,9 +44,33 @@ function showAllEmployeesInfo(employees) {
    }
 }
 
+// Function to return the data of one e,ployee, identified by the employee's ID
+function findEmployeeByID(employeeID, employees) {
+   for (let i = 0; i < employees.length; i++) {
+      if (employees[i].id === employeeID) {
+         return employees[i];
+      }
+   }
+   return null;
+}
+
+// Function to return the data of one sales object, identified by the employee's ID
+function findSaleByID(staffId, sales) {
+   for (let i = 0; i < sales.length; i++) {
+      if (sales[i].staffId === staffId) {
+         return sales[i];
+      }
+   }
+   return null;
+}
+
 // Function to output formatted version of the sale info
 function showSaleInfo(sale) {
-   console.log(`Item: ${sale.item}\nPrice: ${sale.price}\nDate of sale: ${sale.date}\nID of Staff Member: ${sale.staffId}`);
+   if (sale === null) {
+      console.log("Sale object not found");
+   } else {
+      console.log(`Item: ${sale.item}\nPrice: ${sale.price}\nDate of sale: ${sale.date}\nID of Staff Member: ${sale.staffId}`);
+   }
 }
 
 // Function to traverse all the sales and show information for each
@@ -58,3 +86,9 @@ function showAllSalesInfo(sales) {
 showAllEmployeesInfo(Employees);
 
 showAllSalesInfo(Sales);
+
+let foundEmployee = findEmployeeByID(12, Employees);
+showEmployeeInfo(foundEmployee);
+
+let foundSale = findSaleByID(4, Sales);
+showSaleInfo(foundSale);
