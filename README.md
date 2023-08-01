@@ -26,4 +26,4 @@ Experimenting with functions, scope, constructors and methods.
 ## Module 2 Workshop
 
 ## Module 3 Workshop
-
+Practice with file handling, JSON parsing and object handling.
