@@ -14,11 +14,11 @@ const salesDataFile = './Workshop_JSON_Sales.txt';
 
 // Read Employee data from external file (JSON format) into internal object
 const employeeData = fs.readFileSync(employeeDataFile, { encoding: 'utf8', flag: 'r'});
-let Employees = JSON.parse(employeeData);
+let employees = JSON.parse(employeeData);
 
 // Read Sales data from external file (JSON format) into internal object
 const salesData = fs.readFileSync(salesDataFile, { encoding: 'utf8', flag: 'r'});
-let Sales = JSON.parse(salesData);
+let sales = JSON.parse(salesData);
 
 // Function to output formatted version of the employee info
 function showEmployeeInfo(employee) {
@@ -30,7 +30,7 @@ function showEmployeeInfo(employee) {
 }
 
 // Function to traverse all the employees and show information for each
-function showAllEmployeesInfo(employees) {
+function showAllEmployeesInfo() {
    console.log("Show employees info");
    for (let i = 0; i < employees.length; i++) {
       showEmployeeInfo(employees[i]);
@@ -38,7 +38,7 @@ function showAllEmployeesInfo(employees) {
 }
 
 // Function to return the data of one employee, identified by the employee's ID
-function findEmployeeByID(employeeID, employees) {
+function findEmployeeByID(employeeID) {
    for (let i = 0; i < employees.length; i++) {
       if (employees[i].id === employeeID) {
          return employees[i];
@@ -48,7 +48,7 @@ function findEmployeeByID(employeeID, employees) {
 }
 
 // Function to return the data of one sales object, identified by the employee's ID
-function findSaleByID(staffId, sales) {
+function findSaleByID(staffId) {
    for (let i = 0; i < sales.length; i++) {
       if (sales[i].staffId === staffId) {
          return sales[i];
@@ -67,7 +67,7 @@ function showSaleInfo(sale) {
 }
 
 // Function to traverse all the sales and show information for each
-function showAllSalesInfo(sales) {
+function showAllSalesInfo() {
    console.log("Show sales info");
    for (let i = 0; i < sales.length; i++) {
       showSaleInfo(sales[i]);
@@ -75,7 +75,7 @@ function showAllSalesInfo(sales) {
 }
 
 // Function to find employees with a certain property - position
-function findEmployeesByPosition(position, employees) {
+function findEmployeesByPosition(position) {
    for (let i = 0; i < employees.length; i++) {
       if (employees[i].position === position) {
          console.log(`Employee with ID ${employees[i].id} is a ${position}`);
@@ -84,7 +84,7 @@ function findEmployeesByPosition(position, employees) {
 }
 
 // Function to find employees with a certain property - gender
-function findEmployeesByGender(gender, employees) {
+function findEmployeesByGender(gender) {
    for (let i = 0; i < employees.length; i++) {
       if (employees[i].gender === gender) {
          console.log(`Employee with ID ${employees[i].id} is ${gender}`);
@@ -93,7 +93,7 @@ function findEmployeesByGender(gender, employees) {
 }
 
 // Function to find sales with a certain property - sales over a given value in dollars
-function findSalesByValue(value, sales) {
+function findSalesByValue(value) {
    for (let i = 0; i < sales.length; i++) {
       if (sales[i].price >= value) {
          console.log(`Item ${sales[i].item} is ${sales[i].price}`);
@@ -102,20 +102,20 @@ function findSalesByValue(value, sales) {
 }
 
 
-showAllEmployeesInfo(Employees);
+showAllEmployeesInfo();
 
-showAllSalesInfo(Sales);
+showAllSalesInfo();
 
-let foundEmployee = findEmployeeByID(12, Employees);
+let foundEmployee = findEmployeeByID(12);
 showEmployeeInfo(foundEmployee);
 
-let foundSale = findSaleByID(4, Sales);
+let foundSale = findSaleByID(4);
 showSaleInfo(foundSale);
 
-findEmployeesByPosition("Salesperson", Employees);
+findEmployeesByPosition("Salesperson");
 
-findEmployeesByGender("Female", Employees);
-findEmployeesByGender("Male", Employees);
-findEmployeesByGender("Non-Binary", Employees);
+findEmployeesByGender("Female");
+findEmployeesByGender("Male");
+findEmployeesByGender("Non-Binary");
 
-findSalesByValue(10, Sales);
+findSalesByValue(10);
