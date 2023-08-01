@@ -81,6 +81,32 @@ function showAllSalesInfo(sales) {
    }
 }
 
+// Function to find employees with a certain property - position
+function findEmployeesByPosition(position, employees) {
+   for (let i = 0; i < employees.length; i++) {
+      if (employees[i].position === position) {
+         console.log(`Employee with ID ${employees[i].id} is a ${position}`);
+      }
+   }
+}
+
+// Function to find employees with a certain property - gender
+function findEmployeesByGender(gender, employees) {
+   for (let i = 0; i < employees.length; i++) {
+      if (employees[i].gender === gender) {
+         console.log(`Employee with ID ${employees[i].id} is ${gender}`);
+      }
+   }
+}
+
+// Function to find sales with a certain property - sales over a given value in dollars
+function findSalesByValue(value, sales) {
+   for (let i = 0; i < sales.length; i++) {
+      if (sales[i].price >= value) {
+         console.log(`Item ${sales[i].item} is ${sales[i].price}`);
+      }
+   }
+}
 
 
 showAllEmployeesInfo(Employees);
@@ -92,3 +118,11 @@ showEmployeeInfo(foundEmployee);
 
 let foundSale = findSaleByID(4, Sales);
 showSaleInfo(foundSale);
+
+findEmployeesByPosition("Salesperson", Employees);
+
+findEmployeesByGender("Female", Employees);
+findEmployeesByGender("Male", Employees);
+findEmployeesByGender("Non-Binary", Employees);
+
+findSalesByValue(10, Sales);
