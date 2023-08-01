@@ -7,7 +7,7 @@
 // Include the Node file system, to use for reading in data files
 const fs = require('fs');
 
-// Specify the 
+// Specify the filename with path, of the employee and sales data files
 const employeeDataFile = './Workshop_JSON_Employees.txt';
 const salesDataFile = './Workshop_JSON_Sales.txt';
 
@@ -20,24 +20,27 @@ let employees = JSON.parse(employeeData);
 const salesData = fs.readFileSync(salesDataFile, { encoding: 'utf8', flag: 'r'});
 let sales = JSON.parse(salesData);
 
+
 // Function to output formatted version of the employee info
+// If the employee parameter is null then indicate employee not found
 function showEmployeeInfo(employee) {
    if (employee === null) {
-      console.log("Employee object not found");
+      console.log("Employee not found");
    } else {
-      console.log(`Name: ${employee.firstName} ${employee.lastName}\nStaff ID: ${employee.id}\nGender: ${employee.gender}\nAge: ${employee.age}\nPosition: ${employee.position}`);
+      console.log(`Name: ${employee.firstName} ${employee.lastName}\nStaff ID: ${employee.id}\nGender: ${employee.gender}\nAge: ${employee.age}\nPosition: ${employee.position}\n`);
    }
 }
 
 // Function to traverse all the employees and show information for each
 function showAllEmployeesInfo() {
-   console.log("Show employees info");
+   console.log("Showing all employees info");
    for (let i = 0; i < employees.length; i++) {
       showEmployeeInfo(employees[i]);
    }
 }
 
 // Function to return the data of one employee, identified by the employee's ID
+// Returns the employee object correspoding to the employee ID or null if employee ID not found
 function findEmployeeByID(employeeID) {
    for (let i = 0; i < employees.length; i++) {
       if (employees[i].id === employeeID) {
@@ -47,7 +50,8 @@ function findEmployeeByID(employeeID) {
    return null;
 }
 
-// Function to return the data of one sales object, identified by the employee's ID
+// Function to return the data of one sales object, identified by the staff ID
+// Returns the sales object correspoding to the staff ID or null if staff ID not found
 function findSaleByID(staffId) {
    for (let i = 0; i < sales.length; i++) {
       if (sales[i].staffId === staffId) {
@@ -58,17 +62,18 @@ function findSaleByID(staffId) {
 }
 
 // Function to output formatted version of the sale info
+// If the sale parameter is null then indicate sale not found
 function showSaleInfo(sale) {
    if (sale === null) {
-      console.log("Sale object not found");
+      console.log("Sale not found\n");
    } else {
-      console.log(`Item: ${sale.item}\nPrice: ${sale.price}\nDate of sale: ${sale.date}\nID of Staff Member: ${sale.staffId}`);
+      console.log(`Item: ${sale.item}\nPrice: ${sale.price}\nDate of sale: ${sale.date}\nID of Staff Member: ${sale.staffId}\n`);
    }
 }
 
 // Function to traverse all the sales and show information for each
 function showAllSalesInfo() {
-   console.log("Show sales info");
+   console.log("Showing sales info");
    for (let i = 0; i < sales.length; i++) {
       showSaleInfo(sales[i]);
    }
@@ -78,7 +83,7 @@ function showAllSalesInfo() {
 function findEmployeesByPosition(position) {
    for (let i = 0; i < employees.length; i++) {
       if (employees[i].position === position) {
-         console.log(`Employee with ID ${employees[i].id} is a ${position}`);
+         console.log(`Employee with ID ${employees[i].id} is a ${position}\n`);
       }
    }
 }
@@ -87,7 +92,7 @@ function findEmployeesByPosition(position) {
 function findEmployeesByGender(gender) {
    for (let i = 0; i < employees.length; i++) {
       if (employees[i].gender === gender) {
-         console.log(`Employee with ID ${employees[i].id} is ${gender}`);
+         console.log(`Employee with ID ${employees[i].id} is ${gender}\n`);
       }
    }
 }
@@ -96,26 +101,30 @@ function findEmployeesByGender(gender) {
 function findSalesByValue(value) {
    for (let i = 0; i < sales.length; i++) {
       if (sales[i].price >= value) {
-         console.log(`Item ${sales[i].item} is ${sales[i].price}`);
+         console.log(`Item ${sales[i].item} is ${sales[i].price} dollars\n`);
       }
    }
 }
 
-
+console.log("\nSHOW ALL EMPLOYEES INFO\n=======================");
 showAllEmployeesInfo();
-
+console.log("\nSHOW ALL SALES INFO\n===================");
 showAllSalesInfo();
 
-let foundEmployee = findEmployeeByID(12);
-showEmployeeInfo(foundEmployee);
+console.log("\nFIND EMPLOYEE BY ID\n===================");
+showEmployeeInfo(findEmployeeByID(12));
 
-let foundSale = findSaleByID(4);
-showSaleInfo(foundSale);
+console.log("\nFIND SALE BY STAFF ID\n=====================");
+showSaleInfo(findSaleByID(1));
+showSaleInfo(findSaleByID(4));
 
+console.log("\nFIND EMPLOYEE BY POSITION\n=========================");
 findEmployeesByPosition("Salesperson");
 
+console.log("\nFIND EMPLOYEE BY GENDER\n=======================");
 findEmployeesByGender("Female");
 findEmployeesByGender("Male");
 findEmployeesByGender("Non-Binary");
 
+console.log("\nFIND SALES BY MINIMUM VALUE\n===========================");
 findSalesByValue(10);
