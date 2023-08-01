@@ -1,4 +1,5 @@
 /* Module 3 Workshop
+
    The small Guava Computer Store keeps track of its employees and the sales their employees make. 
    The data is exported by their system into JSON format.
 */
@@ -6,26 +7,18 @@
 // Include the Node file system, to use for reading in data files
 const fs = require('fs');
 
-// Read Employee data from external file (JSON format) into internal object
-// Workshop_JSON_Employees.txt
-const data = fs.readFileSync('./Workshop_JSON_Employees.txt', { encoding: 'utf8', flag: 'r'});
-console.log(data);
-let Employees = JSON.parse(data);
-console.log(Employees);
+// Specify the 
+const employeeDataFile = './Workshop_JSON_Employees.txt';
+const salesDataFile = './Workshop_JSON_Sales.txt';
 
+
+// Read Employee data from external file (JSON format) into internal object
+const employeeData = fs.readFileSync(employeeDataFile, { encoding: 'utf8', flag: 'r'});
+let Employees = JSON.parse(employeeData);
 
 // Read Sales data from external file (JSON format) into internal object
-//Workshop_JSON_Sales.txt
-const salesData = fs.readFileSync('./Workshop_JSON_Sales.txt', { encoding: 'utf8', flag: 'r'});
-//console.log(salesData);
+const salesData = fs.readFileSync(salesDataFile, { encoding: 'utf8', flag: 'r'});
 let Sales = JSON.parse(salesData);
-//console.log(Sales);
-
-//let numberOfEmployees = Employees.length;
-//console.log(numberOfEmployees);
-
-//let numberOfSales = Sales.length;
-//console.log(numberOfSales);
 
 // Function to output formatted version of the employee info
 function showEmployeeInfo(employee) {
@@ -44,7 +37,7 @@ function showAllEmployeesInfo(employees) {
    }
 }
 
-// Function to return the data of one e,ployee, identified by the employee's ID
+// Function to return the data of one employee, identified by the employee's ID
 function findEmployeeByID(employeeID, employees) {
    for (let i = 0; i < employees.length; i++) {
       if (employees[i].id === employeeID) {
