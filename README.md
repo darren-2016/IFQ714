@@ -13,7 +13,17 @@ Experimenting with JavaScript Object Notation (JSON).
 ## Code Play 6
 Experimenting with functions, scope, constructors and methods.
 
+## Code Play 7
+
+## Code Play 8
+
+## Code Play 9
+
+## Code Play 10
+
 ## Module 1 Workshop
 
 ## Module 2 Workshop
+
+## Module 3 Workshop
 
