@@ -127,7 +127,7 @@ for (let i = 0; i < employeeSales.length; i++) {
 //Function to display  formatted information on 
 // an employee and all the sales they have made
 function displayEmployeeSaleInfo(employeeId) {
-   emp = employeeSales[employeeId];
+   let emp = employeeSales[employeeId];
 
    console.log(emp);
    if (emp.sales.length === 0) {
