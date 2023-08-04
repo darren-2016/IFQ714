@@ -131,9 +131,9 @@ function displayEmployeeSaleInfo(employeeId) {
 
    console.log(emp);
    if (emp.sales.length === 0) {
-      console.log(`${emp.firstName} ${emp.lastName} made no sales.`)
+      console.log(`${emp.firstName} ${emp.lastName} made no sales.\n`);
    } else {
-      console.log(`${emp.firstName} ${emp.lastName} has made ${emp.sales.length} ${emp.sales.length > 1 ? 'sales' : 'sale'}.`);
+      console.log(`${emp.firstName} ${emp.lastName} has made ${emp.sales.length} ${emp.sales.length > 1 ? 'sales' : 'sale'}.\n`);
    }
 }
 
