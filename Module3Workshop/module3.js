@@ -40,9 +40,9 @@ function showAllEmployeesInfo() {
 
 // Function to return the data of one employee, identified by the employee's ID
 // Returns the employee object correspoding to the employee ID or null if employee ID not found
-function findEmployeeByID(employeeID) {
+function findEmployeeById(employeeId) {
    for (let i = 0; i < employees.length; i++) {
-      if (employees[i].id === employeeID) {
+      if (employees[i].id === employeeId) {
          return employees[i];
       }
    }
@@ -51,7 +51,7 @@ function findEmployeeByID(employeeID) {
 
 // Function to return the data of one sales object, identified by the staff ID
 // Returns the sales object correspoding to the staff ID or null if staff ID not found
-function findSaleByID(staffId) {
+function findSaleById(staffId) {
    for (let i = 0; i < sales.length; i++) {
       if (sales[i].staffId === staffId) {
          return sales[i];
@@ -125,11 +125,11 @@ console.log("\nSHOW ALL SALES INFO\n===================");
 showAllSalesInfo();
 
 console.log("\nFIND EMPLOYEE BY ID\n===================");
-showEmployeeInfo(findEmployeeByID(12));
+showEmployeeInfo(findEmployeeById(12));
 
 console.log("\nFIND SALE BY STAFF ID\n=====================");
-showSaleInfo(findSaleByID(1));
-showSaleInfo(findSaleByID(4));
+showSaleInfo(findSaleById(1));
+showSaleInfo(findSaleById(4));
 
 console.log("\nFIND EMPLOYEE BY POSITION\n=========================");
 findEmployeesByPosition("Salesperson");
