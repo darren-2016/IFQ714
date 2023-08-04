@@ -116,8 +116,22 @@ function findSalesById(id) {
    return salesById;
 }
 
+// BONUS TASKS
+// Create object that combines employee and sales record
+let employeeSales = employees;
+
+for (let i = 0; i < employeeSales.length; i++) {
+   employeeSales[i].sales =sales.filter((sale) => sale.staffId == employeeSales[i].id);
+ }
+ 
+//Function to display  formatted information on 
+// an employee and all the sales they have made
+function displayEmployeeSaleInfo(employeeId) {
+   console.log(employeeSales[employeeId]);
+}
+
+
 // Test calls
-/*
 console.log("\nSHOW ALL EMPLOYEES INFO\n=======================");
 showAllEmployeesInfo();
 
@@ -141,22 +155,8 @@ findEmployeesByGender("Non-Binary");
 
 console.log("\nFIND SALES BY MINIMUM VALUE\n===========================");
 findSalesByValue(10);
-*/
 
 console.log("==========================================");
-
-// Create object that combines employee and sales record
-let employeeSales = employees;
-
-for (let i = 0; i < employeeSales.length; i++) {
-   employeeSales[i].sales =sales.filter((sale) => sale.staffId == employeeSales[i].id);
- }
- 
-//Function to display  formatted information on 
-// an employee and all the sales they have made
-function displayEmployeeSaleInfo(employeeId) {
-   console.log(employeeSales[employeeId]);
-}
 
 
 displayEmployeeSaleInfo(0);
