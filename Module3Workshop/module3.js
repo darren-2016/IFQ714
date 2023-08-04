@@ -14,11 +14,11 @@ const salesDataFile = './Workshop_JSON_Sales.txt';
 
 // Read Employee data from external file (JSON format) into internal object
 const employeeData = fs.readFileSync(employeeDataFile, { encoding: 'utf8', flag: 'r'});
-let employees = JSON.parse(employeeData);
+const employees = JSON.parse(employeeData);
 
 // Read Sales data from external file (JSON format) into internal object
 const salesData = fs.readFileSync(salesDataFile, { encoding: 'utf8', flag: 'r'});
-let sales = JSON.parse(salesData);
+const sales = JSON.parse(salesData);
 
 
 // Function to output formatted version of the employee info
@@ -33,7 +33,6 @@ function showEmployeeInfo(employee) {
 
 // Function to traverse all the employees and show information for each
 function showAllEmployeesInfo() {
-   console.log("Showing all employees info");
    for (let i = 0; i < employees.length; i++) {
       showEmployeeInfo(employees[i]);
    }
@@ -73,7 +72,6 @@ function showSaleInfo(sale) {
 
 // Function to traverse all the sales and show information for each
 function showAllSalesInfo() {
-   console.log("Showing sales info");
    for (let i = 0; i < sales.length; i++) {
       showSaleInfo(sales[i]);
    }
@@ -106,8 +104,11 @@ function findSalesByValue(value) {
    }
 }
 
+
+// Test calls
 console.log("\nSHOW ALL EMPLOYEES INFO\n=======================");
 showAllEmployeesInfo();
+
 console.log("\nSHOW ALL SALES INFO\n===================");
 showAllSalesInfo();
 
@@ -128,3 +129,9 @@ findEmployeesByGender("Non-Binary");
 
 console.log("\nFIND SALES BY MINIMUM VALUE\n===========================");
 findSalesByValue(10);
+
+
+// Create object that combines employee and sales record
+//let employeeSales = [employees];
+//employeeSales.push(sales);
+//console.log(employeeSales);
