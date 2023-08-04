@@ -127,7 +127,14 @@ for (let i = 0; i < employeeSales.length; i++) {
 //Function to display  formatted information on 
 // an employee and all the sales they have made
 function displayEmployeeSaleInfo(employeeId) {
-   console.log(employeeSales[employeeId]);
+   emp = employeeSales[employeeId];
+
+   console.log(emp);
+   if (emp.sales.length === 0) {
+      console.log(`${emp.firstName} ${emp.lastName} made no sales.`)
+   } else {
+      console.log(`${emp.firstName} ${emp.lastName} has made ${emp.sales.length} ${emp.sales.length > 1 ? 'sales' : 'sale'}.`);
+   }
 }
 
 
@@ -156,10 +163,10 @@ findEmployeesByGender("Non-Binary");
 console.log("\nFIND SALES BY MINIMUM VALUE\n===========================");
 findSalesByValue(10);
 
-console.log("==========================================");
-
+console.log("\nDISPLAY FORMATTED INFORMATION ON EMPLOYEES AND THE SALES THEY HAVE MADE (BONUS TASK)\n====================================================================================");
 
 displayEmployeeSaleInfo(0);
 displayEmployeeSaleInfo(1);
 displayEmployeeSaleInfo(2);
-
+displayEmployeeSaleInfo(3);
+displayEmployeeSaleInfo(4);
