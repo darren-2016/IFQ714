@@ -1,9 +1,4 @@
-/* Module 2 Workshop
-   The small Guava Computer Store keeps track of its employees and the sales their employees make. 
-   The data is exported by their system into JSON format.
-*/
-
-// Step 1
+// Step 33333333333333333333333333333333333333333333333333333333333
 // Create some employee and sale objects
 const employee1 = JSON.parse('{"id":1, "firstName":"John", "lastName":"Smith", "gender":"Male", "age":23, "position":"Manager"}');
 console.log(employee1);
@@ -40,7 +35,8 @@ function Employee(id, firstName, lastName, gender, age, position) {
     }
 
     this.toString = function() {
-        return `Name: ${this.firstName} ${this.lastName}\nStaff ID: ${this.id}\nGender: ${this.gender}\nAge: ${this.age}\nPosition: ${this.position}`;
+        return `Name: ${this.firstName} ${this.lastName}\n
+        Staff ID: ${this.id}\nGender: ${this.gender}\nAge: ${this.age}\nPosition: ${this.position}`;
     }
 }
 
