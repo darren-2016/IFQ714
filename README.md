@@ -21,9 +21,16 @@ Experimenting with functions, scope, constructors and methods.
 
 ## Code Play 10
 
+## Code Play 11
+
+## Code Play 12
+
 ## Module 1 Workshop
 
 ## Module 2 Workshop
 
 ## Module 3 Workshop
+
+## Module 4 Workshop
+
 Practice with file handling, JSON parsing and object handling.
