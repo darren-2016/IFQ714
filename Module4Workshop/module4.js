@@ -172,5 +172,5 @@ displayEmployeeSaleInfo(3);
 displayEmployeeSaleInfo(4);
 
 
-//module.exports = { showEmployeeInfo, findEmployeeById };
 module.exports = findEmployeeById;
+

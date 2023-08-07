@@ -1,5 +1,6 @@
 // Import the function from the base file
 const findEmployeeById = require("./module4");
+//const findSalesByValue = require("./module4");
 
 // Test with an input of 2
 test('Show employee info.', () => {
@@ -13,3 +14,9 @@ test('Show employee info.', () => {
         }
         ]});
 });
+
+// Test with an input of 10
+//test('Show sales by value.', () => {
+//    let testFunction = findSalesByValue(1000);
+//    expect(testFunction).toBe("Item Pre-built PC is 1999.95 dollars");
+//});
