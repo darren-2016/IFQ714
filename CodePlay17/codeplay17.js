@@ -55,3 +55,47 @@ function printGreeting(greeting) {
     console.log(greeting);
 }
 
+// Immutability
+const hello = "hello";
+const five = 5;
+const vegetables = ["Carrot", "Potato", "Pumpkin", "Broccoli"];
+const city = {name: "Antwerp", country: "Belgium"};
+
+Object.freeze(vegetables);
+Object.freeze(city);
+
+vegetables[0] = "Cauliflower";
+city.name = "Brussels";
+console.log(vegetables);
+console.log(city);
+
+
+function arrayAdd(collection, index, newItems) {
+    const newCollection = collection.slice();
+    if (Array.isArray(newItems)) {
+        newCollection.splice(index, 0, ...newItems);
+    } else {
+        newCollection.splice(index, 0, newItems);
+    }
+    return newCollection;
+}
+
+// Recursive functions
+function recursiveSubtractor(initialNum) {
+//    if (initialNum === 0) { console.log("Reached 0"); return; }
+    if (initialNum <= 0) { console.log("Reached 0 or under"); return; }
+    else {
+        console.log(`Currently at ${ initialNum }`);
+        recursiveSubtractor(initialNum - 1);
+    }
+}
+recursiveSubtractor(5);
+recursiveSubtractor(-5);
+//recursiveSubtractor(20000);
+
+
+function factorial(initialNum) {
+    if (initialNum === 0) { console.log("Reached 0"); return 1; }
+    else {console.log(`Multiplying ${initialNum} by ${initialNum - 1}`); return initialNum * factorial(initialNum - 1); }
+}
+console.log(factorial(10));
