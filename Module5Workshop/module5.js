@@ -35,9 +35,6 @@ function showEmployeeInfo(employee) {
 
 // Function to traverse all the employees and show information for each
 function showAllEmployeesInfo() {
-   //for (let i = 0; i < employees.length; i++) {
-   //   showEmployeeInfo(employees[i]);
-   //}
    employees.forEach(function (element) { showEmployeeInfo(element); });
 }
 
@@ -79,39 +76,21 @@ function showSaleInfo(sale) {
 
 // Function to traverse all the sales and show information for each
 function showAllSalesInfo() {
-   //for (let i = 0; i < sales.length; i++) {
-   //   showSaleInfo(sales[i]);
-   //}
    sales.forEach(function(element) { element => { showSaleInfo(element); } });
 }
 
 // Function to find employees with a certain property - position
 function findEmployeesByPosition(position) {
-   //for (let i = 0; i < employees.length; i++) {
-   //   if (employees[i].position === position) {
-   //      console.log(`Employee with ID ${employees[i].id} is a ${position}\n`);
-   //   }
-   //}
    employees.forEach(function(element) { if (element.position === position) console.log(`Employee with ID ${element.id} is a ${position}\n`); });
 }
 
 // Function to find employees with a certain property - gender
 function findEmployeesByGender(gender) {
-   //for (let i = 0; i < employees.length; i++) {
-   //   if (employees[i].gender === gender) {
-   //      console.log(`Employee with ID ${employees[i].id} is ${gender}\n`);
-   //   }
-   //}
    employees.forEach(function(element) { if (element.gender === gender) console.log(`Employee with ID ${element.id} is a ${gender}\n`); });
 }
 
 // Function to find sales with a certain property - sales over a given value in dollars
 function findSalesByValue(value) {
-   //for (let i = 0; i < sales.length; i++) {
-   //   if (sales[i].price >= value) {
-   //      console.log(`Item ${sales[i].item} is ${sales[i].price} dollars\n`);
-   //   }
-   //}
    sales.forEach(function(element) { if (element.price >= value) console.log(`Item ${element.item} is ${element.price} dollars\n`); });
 }
 
