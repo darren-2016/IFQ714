@@ -91,3 +91,43 @@ console.log(numbers.findIndex(function(element) { return element < 100 }));
 console.log(numbers);
 console.log(numbers.some(function(element) { return element < 100 }));
 console.log(numbers.every(function(element) { return element < 100 }));
+
+/*****************************************
+ * Array references and copying          *
+ *****************************************/
+
+let a = 10; let b = a;
+b += 10;
+console.log(`a = ${a}`);
+console.log(`b = ${b}`);
+
+let c = [1, 2, 3]; let d = c;
+d[2] = 4;
+console.log(`c = ${c}`);
+console.log(`d = ${d}`);
+
+const e = [4, 5, 6];
+e[2] = 7;
+console.log(`e = ${e}`);
+//e = [7, 8, 9];
+
+let f = [7, 8, 9];
+let g = f.slice();
+g[2] = 10;
+console.log(`f = ${f}`);
+console.log(`g = ${g}`);
+
+// slice() performs 'shallow' copies on arrays, so doesn't copy the contents of the multi-dimensiopn array, just the references
+let multiA = [[1,1],[2,2]];
+let multiB = multiA.slice();
+multiB[0][0] = 6;
+console.log(`multiA = ${multiA}`);
+console.log(`multiB = ${multiB}`);
+
+// Using JSON.parse() and JSON.stringify() to perform effectively a 'deep' copy 
+let car1 = {brand: "Ferrai", model: "F40", year: 1987};
+let car2 = JSON.parse(JSON.stringify(car1));
+car2.model = "F50";
+car2.year = 1995;
+console.log(car1);
+console.log(car2);
