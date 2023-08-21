@@ -9,13 +9,14 @@
 const fs = require('fs');
 
 // Specify the filename with path, of the employee and sales data files
-const employeeDataFile = './Workshop_JSON_Employees.txt';
+const employeeDataFile = './Workshop_JSON_Employees.json';
 const salesDataFile = './Workshop_JSON_Sales.txt';
 
 
 // Read Employee data from external file (JSON format) into internal object
 const employeeData = fs.readFileSync(employeeDataFile, { encoding: 'utf8', flag: 'r'});
-console.log(employeeData);
+
+   console.log(employeeData);
 const employees = JSON.parse(employeeData);
 
 // Read Sales data from external file (JSON format) into internal object
@@ -41,16 +42,10 @@ function showAllEmployeesInfo() {
 // Function to return the data of one employee, identified by the employee's ID
 // Returns the employee object correspoding to the employee ID or null if employee ID not found
 function findEmployeeById(employeeId) {
-   for (let i = 0; i < employees.length; i++) {
-      if (employees[i].id === employeeId) {
-         return employees[i];
-      }
-   }
-   return null;
-
-   //employees.forEach(function(element) {  
-   //if(element.id === employeeId) return element;} );
-   //return null;
+   let foundEmployee = null;
+   employees.forEach(function(element) {  
+   if(element.id === employeeId) foundEmployee = element;} );
+   return foundEmployee;
 }
 
 // Function to return the data of one sales object, identified by the staff ID
@@ -114,6 +109,10 @@ for (let i = 0; i < employeeSales.length; i++) {
    employeeSales[i].sales =sales.filter((sale) => sale.staffId == employeeSales[i].id);
  }
  
+function mapSalesWithEmployee() { // TBD
+   //employees.map()
+}
+
 //Function to display  formatted information on 
 // an employee and all the sales they have made
 function displayEmployeeSaleInfo(employeeId) {
@@ -136,7 +135,7 @@ console.log("\nSHOW ALL SALES INFO\n===================");
 showAllSalesInfo();
 
 console.log("\nFIND EMPLOYEE BY ID\n===================");
-showEmployeeInfo(findEmployeeById(2));
+showEmployeeInfo(findEmployeeById(12));
 
 console.log("\nFIND SALE BY STAFF ID\n=====================");
 showSaleInfo(findSaleById(1));
