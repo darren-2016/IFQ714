@@ -61,3 +61,33 @@ console.log(extraAnimal);
 console.log(numbers);
 console.log(numbers.slice(1,2));
 console.log(numbers);
+
+
+/*****************************************
+ * Array methods across all elements     *
+ *****************************************/
+
+// forEach method
+let wonders = ["Great Pyramid", "Hanging Gardens", "Statue of Zeus", "Temple of Artemis", "Tomb of Mausolus", "Colossus", "Pharos"];
+wonders.forEach(function(element, index) {console.log(`Element at ${index} is ${element}`); });
+
+// Modifying the array
+wonders.forEach(function(element, index) { wonders[index] = element.toUpperCase() });
+console.log(wonders);
+
+// Using map() to change an array but not modify the original
+let lowerWonders = wonders.map(function(element) { return element.toLowerCase() });
+console.log(lowerWonders);
+console.log(wonders);
+
+// filter() - for finding elements in an array that meet certain conditions
+console.log(numbers.filter(function(element) { return element < 100 }));
+
+// find() and findIndex() functions
+console.log(numbers.find(function(element) { return element < 100 }));
+console.log(numbers.findIndex(function(element) { return element < 100 }));
+
+// some() and every() methods
+console.log(numbers);
+console.log(numbers.some(function(element) { return element < 100 }));
+console.log(numbers.every(function(element) { return element < 100 }));
