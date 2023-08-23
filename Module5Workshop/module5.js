@@ -110,7 +110,15 @@ for (let i = 0; i < employeeSales.length; i++) {
  }
  
 function mapSalesWithEmployee() { // TBD
-   //employees.map()
+   //console.log(employees);
+   //console.log(sales);
+   const newEmployee = Object.assign([], employees);
+   employees.map(function(employee, index) {
+      //console.log("newEmployee : " + newEmployee.id + " " + newEmployee.lastName);
+      //console.log("sales : " + sales[0].staffId);
+      newEmployee[index].sales = sales.filter(function(element) { return element.staffId === employee.id;});
+   });
+   return newEmployee;
 }
 
 //Function to display  formatted information on 
@@ -125,7 +133,6 @@ function displayEmployeeSaleInfo(employeeId) {
       console.log(`${emp.firstName} ${emp.lastName} has made ${emp.sales.length} ${emp.sales.length > 1 ? 'sales' : 'sale'}.\n`);
    }
 }
-
 
 // Test calls
 console.log("\nSHOW ALL EMPLOYEES INFO\n=======================");
@@ -160,6 +167,53 @@ displayEmployeeSaleInfo(2);
 displayEmployeeSaleInfo(3);
 displayEmployeeSaleInfo(4);
 
+/** Helper function to round numeric value to specified number of places
+ * If the number passed in is undefined or NaN, return as a null
+ * @param {number} n
+ * @param {number} places
+ * @return {number}
+ */
+function precisionRound(n, places) {
+   if ((n === undefined) || (n === NaN)) {
+       return null;
+   } else {
+       return +(Math.round(n + 'e+' + places) + 'e-' + places);
+   }
+}
+
+/**
+ * Calculate the sales commission for each employee
+ */
+function salesCommission () {
+   employeeSalesList.forEach(function(employee) { 
+      try {
+         if (employee.sales.length < 1) {
+            throw new Error("Employee made no sales");
+         } else {
+            let salesTotal = 0;
+            employee.sales.forEach(function(sale) {
+               salesTotal += sale.price;
+            });
+            let commission = salesTotal * 0.1;
+            console.log(`Employee received commision of $${precisionRound(commission, 2)}`);
+         }
+      }
+      catch (error) {
+         console.log(`Unable to calculate commission for employee ${employee.id}: ${error.message}`);
+      }
+   });
+}
+
+const employeeSalesList = mapSalesWithEmployee();
+console.log("********************************************");
+console.log("********************************************");
+console.log(employeeSalesList);
+console.log("********************************************");
+console.log("********************************************");
+
+salesCommission();
+
+console.log("********************************************");
+console.log("********************************************");
 
 module.exports = findEmployeeById;
-
