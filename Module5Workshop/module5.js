@@ -8,15 +8,20 @@
 // Include the Node file system, to use for reading in data files
 const fs = require('fs');
 
+// Include the helper.js Helper Function module
+const helper = require('./helper');
+
+const precisionRound = helper.precisionRound;
+
+
 // Specify the filename with path, of the employee and sales data files
 const employeeDataFile = './Workshop_JSON_Employees.json';
 const salesDataFile = './Workshop_JSON_Sales.txt';
 
-
 // Read Employee data from external file (JSON format) into internal object
 const employeeData = fs.readFileSync(employeeDataFile, { encoding: 'utf8', flag: 'r'});
 
-   console.log(employeeData);
+console.log(employeeData);
 const employees = JSON.parse(employeeData);
 
 // Read Sales data from external file (JSON format) into internal object
@@ -24,8 +29,10 @@ const salesData = fs.readFileSync(salesDataFile, { encoding: 'utf8', flag: 'r'})
 const sales = JSON.parse(salesData);
 
 
-// Function to output formatted version of the employee info
-// If the employee parameter is null then indicate employee not found
+/**
+ * Function to output formatted version of the employee info
+ * If the employee parameter is null then indicate employee not found
+ */
 function showEmployeeInfo(employee) {
    if (employee === null) {
       console.log("Employee not found");
@@ -34,13 +41,17 @@ function showEmployeeInfo(employee) {
    }
 }
 
-// Function to traverse all the employees and show information for each
+/**
+ * Function to traverse all the employees and show information for each
+ */
 function showAllEmployeesInfo() {
    employees.forEach(function (element) { showEmployeeInfo(element); });
 }
 
-// Function to return the data of one employee, identified by the employee's ID
-// Returns the employee object correspoding to the employee ID or null if employee ID not found
+/**
+ * Function to return the data of one employee, identified by the employee's ID
+ * Returns the employee object correspoding to the employee ID or null if employee ID not found
+ */
 function findEmployeeById(employeeId) {
    let foundEmployee = null;
    employees.forEach(function(element) {  
@@ -48,8 +59,10 @@ function findEmployeeById(employeeId) {
    return foundEmployee;
 }
 
-// Function to return the data of one sales object, identified by the staff ID
-// Returns the sales object correspoding to the staff ID or null if staff ID not found
+/**
+ * Function to return the data of one sales object, identified by the staff ID
+ * Returns the sales object correspoding to the staff ID or null if staff ID not found
+ */
 function findSaleById(staffId) {
    for (let i = 0; i < sales.length; i++) {
       if (sales[i].staffId === staffId) {
@@ -59,8 +72,10 @@ function findSaleById(staffId) {
    return null;
 }
 
-// Function to output formatted version of the sale info
-// If the sale parameter is null then indicate sale not found
+/**
+ * Function to output formatted version of the sale info
+ * If the sale parameter is null then indicate sale not found
+ */
 function showSaleInfo(sale) {
    if (sale === null) {
       console.log("Sale not found\n");
@@ -69,27 +84,37 @@ function showSaleInfo(sale) {
    }
 }
 
-// Function to traverse all the sales and show information for each
+/**
+ * Function to traverse all the sales and show information for each
+ */
 function showAllSalesInfo() {
    sales.forEach(function(element) { element => { showSaleInfo(element); } });
 }
 
-// Function to find employees with a certain property - position
+/**
+ * Function to find employees with a certain property - position
+ */
 function findEmployeesByPosition(position) {
    employees.forEach(function(element) { if (element.position === position) console.log(`Employee with ID ${element.id} is a ${position}\n`); });
 }
 
-// Function to find employees with a certain property - gender
+/**
+ * Function to find employees with a certain property - gender
+ */
 function findEmployeesByGender(gender) {
    employees.forEach(function(element) { if (element.gender === gender) console.log(`Employee with ID ${element.id} is a ${gender}\n`); });
 }
 
-// Function to find sales with a certain property - sales over a given value in dollars
+/**
+ * Function to find sales with a certain property - sales over a given value in dollars
+ */
 function findSalesByValue(value) {
    sales.forEach(function(element) { if (element.price >= value) console.log(`Item ${element.item} is ${element.price} dollars\n`); });
 }
 
-// Function to find sales with a certain property - sales over a given value in dollars
+/**
+ * Function to find sales with a certain property - sales over a given value in dollars
+ */
 function findSalesById(id) {
    let salesById = [];
    for (let i = 0, j = 0; i < sales.length; i++) {
@@ -101,14 +126,20 @@ function findSalesById(id) {
    return salesById;
 }
 
-// BONUS TASKS
-// Create object that combines employee and sales record
+/***** BONUS TASKS *****/
+/**
+ * Create object that combines employee and sales record
+ */
 let employeeSales = employees;
 
 for (let i = 0; i < employeeSales.length; i++) {
    employeeSales[i].sales =sales.filter((sale) => sale.staffId == employeeSales[i].id);
  }
  
+
+/**
+ * Associate all sales that an employee has made with the employee object
+ */
 function mapSalesWithEmployee() { // TBD
    //console.log(employees);
    //console.log(sales);
@@ -121,8 +152,10 @@ function mapSalesWithEmployee() { // TBD
    return newEmployee;
 }
 
-//Function to display  formatted information on 
-// an employee and all the sales they have made
+/**
+ * Function to display  formatted information on 
+ * an employee and all the sales they have made
+ */
 function displayEmployeeSaleInfo(employeeId) {
    let emp = employeeSales[employeeId];
 
@@ -134,7 +167,9 @@ function displayEmployeeSaleInfo(employeeId) {
    }
 }
 
-// Test calls
+/**
+ * Test calls
+ */
 console.log("\nSHOW ALL EMPLOYEES INFO\n=======================");
 showAllEmployeesInfo();
 
@@ -167,19 +202,8 @@ displayEmployeeSaleInfo(2);
 displayEmployeeSaleInfo(3);
 displayEmployeeSaleInfo(4);
 
-/** Helper function to round numeric value to specified number of places
- * If the number passed in is undefined or NaN, return as a null
- * @param {number} n
- * @param {number} places
- * @return {number}
- */
-function precisionRound(n, places) {
-   if ((n === undefined) || (n === NaN)) {
-       return null;
-   } else {
-       return +(Math.round(n + 'e+' + places) + 'e-' + places);
-   }
-}
+
+
 
 /**
  * Calculate the sales commission for each employee
@@ -195,7 +219,7 @@ function salesCommission () {
                salesTotal += sale.price;
             });
             let commission = salesTotal * 0.1;
-            console.log(`Employee received commision of $${precisionRound(commission, 2)}`);
+            console.log(`Employee received commission of $${precisionRound(commission, 2)}`);
          }
       }
       catch (error) {
