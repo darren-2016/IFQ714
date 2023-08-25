@@ -126,6 +126,8 @@ function findSalesById(id) {
    return salesById;
 }
 
+
+
 /***** BONUS TASKS *****/
 /**
  * Create object that combines employee and sales record
@@ -167,6 +169,32 @@ function displayEmployeeSaleInfo(employeeId) {
    }
 }
 
+
+
+/**
+ * Calculate the sales commission for each employee
+ */
+function salesCommission () {
+   employeeSalesList.forEach(function(employee) { 
+      try {
+         if (employee.sales.length < 1) {
+            throw new Error("Employee made no sales");
+         } else {
+            let salesTotal = 0;
+            employee.sales.forEach(function(sale) {
+               salesTotal += sale.price;
+            });
+            let commission = salesTotal * 0.1;
+            console.log(`Employee ${employee.id}, ${employee.firstName} ${employee.lastName}, received commission of $${precisionRound(commission, 2)}`);
+         }
+      }
+      catch (error) {
+         console.log(`Unable to calculate commission for employee ${employee.id}, ${employee.firstName} ${employee.lastName}: ${error.message}`);
+      }
+   });
+}
+
+
 /**
  * Test calls
  */
@@ -195,50 +223,19 @@ console.log("\nFIND SALES BY MINIMUM VALUE\n===========================");
 findSalesByValue(10);
 
 console.log("\nDISPLAY FORMATTED INFORMATION ON EMPLOYEES AND THE SALES THEY HAVE MADE (BONUS TASK)\n====================================================================================");
-
 displayEmployeeSaleInfo(0);
 displayEmployeeSaleInfo(1);
 displayEmployeeSaleInfo(2);
 displayEmployeeSaleInfo(3);
 displayEmployeeSaleInfo(4);
 
-
-
-
-/**
- * Calculate the sales commission for each employee
- */
-function salesCommission () {
-   employeeSalesList.forEach(function(employee) { 
-      try {
-         if (employee.sales.length < 1) {
-            throw new Error("Employee made no sales");
-         } else {
-            let salesTotal = 0;
-            employee.sales.forEach(function(sale) {
-               salesTotal += sale.price;
-            });
-            let commission = salesTotal * 0.1;
-            console.log(`Employee received commission of $${precisionRound(commission, 2)}`);
-         }
-      }
-      catch (error) {
-         console.log(`Unable to calculate commission for employee ${employee.id}: ${error.message}`);
-      }
-   });
-}
-
+console.log("\nASSOCIATE ALL SALES THAT EMPLOYEE HAS MADE WITH EMPLOYEE OBJECT\n===============================================================");
 const employeeSalesList = mapSalesWithEmployee();
-console.log("********************************************");
-console.log("********************************************");
 console.log(employeeSalesList);
-console.log("********************************************");
-console.log("********************************************");
 
+console.log("\nDISPLAY SALES COMMISSIONS\n=========================");
 salesCommission();
 
-console.log("********************************************");
-console.log("********************************************");
 
 /**
  * Recursive function to calculate greatest common divisor
