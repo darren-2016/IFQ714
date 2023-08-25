@@ -20,8 +20,6 @@ const salesDataFile = './Workshop_JSON_Sales.txt';
 
 // Read Employee data from external file (JSON format) into internal object
 const employeeData = fs.readFileSync(employeeDataFile, { encoding: 'utf8', flag: 'r'});
-
-console.log(employeeData);
 const employees = JSON.parse(employeeData);
 
 // Read Sales data from external file (JSON format) into internal object
@@ -119,7 +117,6 @@ function findSalesById(id) {
    let salesById = [];
    for (let i = 0, j = 0; i < sales.length; i++) {
       if (sales[i].staffId === id) {
-         //console.log(sales[i]);
          salesById[j++] = sales[i];
       }
    }
@@ -143,12 +140,8 @@ for (let i = 0; i < employeeSales.length; i++) {
  * Associate all sales that an employee has made with the employee object
  */
 function mapSalesWithEmployee() { // TBD
-   //console.log(employees);
-   //console.log(sales);
    const newEmployee = Object.assign([], employees);
    employees.map(function(employee, index) {
-      //console.log("newEmployee : " + newEmployee.id + " " + newEmployee.lastName);
-      //console.log("sales : " + sales[0].staffId);
       newEmployee[index].sales = sales.filter(function(element) { return element.staffId === employee.id;});
    });
    return newEmployee;
