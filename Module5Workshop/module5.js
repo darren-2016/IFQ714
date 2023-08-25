@@ -174,8 +174,8 @@ function displayEmployeeSaleInfo(employeeId) {
 /**
  * Calculate the sales commission for each employee
  */
-function salesCommission () {
-   employeeSalesList.forEach(function(employee) { 
+function salesCommission (employeesList) {
+   employeesList.forEach(function(employee) { 
       try {
          if (employee.sales.length < 1) {
             throw new Error("Employee made no sales");
@@ -234,7 +234,7 @@ const employeeSalesList = mapSalesWithEmployee();
 console.log(employeeSalesList);
 
 console.log("\nDISPLAY SALES COMMISSIONS\n=========================");
-salesCommission();
+salesCommission(employeeSalesList);
 
 
 /**
