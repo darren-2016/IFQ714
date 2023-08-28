@@ -6,7 +6,7 @@ window.onload = function() {
     });
     document.body,addEventListener("click", function() {
         document.getElementById("square").innerHTML = "You clicked on the page body.";
-    });
+    }, true);
 }
 
 
