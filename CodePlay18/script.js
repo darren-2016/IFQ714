@@ -1,4 +1,13 @@
 window.onload = function() {
-    const button = document.getElementById("button");
-    button.addEventListener("click", function() { button.innerHTML = "You clicked the button"; });
+    document.getElementById("button").addEventListener("click", buttonEvent);
+}
+
+
+function buttonEvent() {
+    const counter = document.getElementById("counter");
+    currentNum = Number.parseInt(counter.innerHTML);
+    counter.innerHTML = `${++currentNum}`;
+    if (currentNum == 5) {
+        document.getElementById("button").removeEventListener("click", buttonEvent);
+    }
 }
