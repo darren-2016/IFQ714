@@ -1,5 +1,9 @@
 window.onload = function() {
     document.getElementById("button").addEventListener("click", buttonEvent);
+    const square = document.getElementById("square");
+    square.addEventListener("click", function(event) {
+        square.innerHTML = `You clicked the mouse at ${event.offsetX}, ${event.offsetY} in the square.`;
+    });
 }
 
 
