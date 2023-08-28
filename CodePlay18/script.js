@@ -4,6 +4,9 @@ window.onload = function() {
     square.addEventListener("click", function(event) {
         square.innerHTML = `You clicked the mouse at ${event.offsetX}, ${event.offsetY} in the square.`;
     });
+    document.body,addEventListener("click", function() {
+        document.getElementById("square").innerHTML = "You clicked on the page body.";
+    });
 }
 
 
