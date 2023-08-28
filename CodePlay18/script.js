@@ -10,11 +10,12 @@ window.onload = function() {
 }
 
 
-function buttonEvent() {
+function buttonEvent(event) {
     const counter = document.getElementById("counter");
     currentNum = Number.parseInt(counter.innerHTML);
     counter.innerHTML = `${++currentNum}`;
     if (currentNum == 5) {
         document.getElementById("button").removeEventListener("click", buttonEvent);
     }
+    event.stopPropagation();
 }
