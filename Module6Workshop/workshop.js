@@ -20,3 +20,40 @@ function setTextBold() {
 function setBackgroundColour(colour) {
     document.body.setAttribute("style", `background-color:${colour}`);
 }
+
+
+function getSelectedBackgroundColour (event) {
+    let colour = event.target.value;
+    setBackgroundColour(colour);
+}
+
+function setEnableButtonPressed() {
+    document.getElementById("enableButton").disabled = true;
+    document.getElementById("disableButton").disabled = false;
+    document.getElementById("colourSelect").disabled = false;
+}
+
+function setDisableButtonPressed() {
+    document.getElementById("enableButton").disabled = false;
+    document.getElementById("disableButton").disabled = true;
+    document.getElementById("colourSelect").disabled = true;
+}
+
+function enableEventListener() {
+    document.getElementById("colourSelect").addEventListener("change", getSelectedBackgroundColour);
+    document.getElementById("enableButton").addEventListener("click",  setEnableButtonPressed);
+    document.getElementById("disableButton").addEventListener("click",  setDisableButtonPressed);
+
+    //document.getElementById("enableButton").disabled = true;
+    //document.getElementById("disableButton").disabled = false;
+
+}
+
+
+window.onload = function () {
+    document.getElementById("regularButton").addEventListener("click", setTextRegular); 
+    document.getElementById("italicButton").addEventListener("click", setTextItalic);
+    document.getElementById("boldButton").addEventListener("click", setTextBold);
+
+    enableEventListener();
+}
