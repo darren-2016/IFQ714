@@ -30,7 +30,7 @@ function rejectCallback (error) { console.log(`Error is: ${error.message}`);}
 promiseFunction().then(resolveCallback, rejectCallback);
 */
 
-function promiseFunction (initialNum) {
+/*function promiseFunction (initialNum) {
     return new Promise(function (resolve, reject) {
         try {
             let answer = initialNum + 5;
@@ -42,3 +42,12 @@ function promiseFunction (initialNum) {
 }
 
 promiseFunction(15).then(resolveCallback, rejectCallback);
+*/
+
+
+async function asyncFunction(initialNum) {
+    let answer = initialNum + 5;
+    return answer;
+}
+
+asyncFunction(25).then (resolveCallback, rejectCallback);
