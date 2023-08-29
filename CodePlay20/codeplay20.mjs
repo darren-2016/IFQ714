@@ -7,9 +7,14 @@ import fetch from "node-fetch";
 */
 
 async function getUrl(url) {
-    let response = await fetch(url);
-    let text = await response.text();
-    console.log(text);
+    try {
+        let response = await fetch(url);
+        let text = await response.text();
+        console.log(text);
+    } catch (error) {
+        console.log(`Error occurred: ${error.message}`);
+    }
 }
 
-getUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
+getUrl("car");
+//getUrl("https://www.w3.org/TR/PNG/iso_8859-1.txt");
