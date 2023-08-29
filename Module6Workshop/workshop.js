@@ -39,11 +39,19 @@ function setDisableButtonPressed() {
     document.getElementById("colourSelect").disabled = true;
 }
 
+function getActivityIdea() {
+    fetch("https://www.boredapi.com/api/activity")
+        .then(function(response) { return response.json(); })
+        .then(function(data) { document.getElementById("ideaDiv").textContent = data.activity; });
+}
+
+
 function enableEventListener() {
     document.getElementById("colourSelect").addEventListener("change", getSelectedBackgroundColour);
     document.getElementById("enableButton").addEventListener("click",  setEnableButtonPressed);
     document.getElementById("disableButton").addEventListener("click",  setDisableButtonPressed);
 
+    document.getElementById("ideaButton").addEventListener("click", getActivityIdea);
     //document.getElementById("enableButton").disabled = true;
     //document.getElementById("disableButton").disabled = false;
 
