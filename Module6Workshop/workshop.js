@@ -45,13 +45,20 @@ function getActivityIdea() {
         .then(function(data) { document.getElementById("ideaDiv").textContent = data.activity; });
 }
 
+async function getActivityIdea2() {
+    const res = await fetch("https://www.boredapi.com/api/activity");
 
+    const data = await res.json();
+
+    document.getElementById("ideaDiv").textContent = data.activity;
+
+}
 function enableEventListener() {
     document.getElementById("colourSelect").addEventListener("change", getSelectedBackgroundColour);
     document.getElementById("enableButton").addEventListener("click",  setEnableButtonPressed);
     document.getElementById("disableButton").addEventListener("click",  setDisableButtonPressed);
 
-    document.getElementById("ideaButton").addEventListener("click", getActivityIdea);
+    document.getElementById("ideaButton").addEventListener("click", getActivityIdea2);
     //document.getElementById("enableButton").disabled = true;
     //document.getElementById("disableButton").disabled = false;
 
