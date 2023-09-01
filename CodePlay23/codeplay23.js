@@ -110,6 +110,7 @@ database.run("UPDATE Album SET AlbumId = 1 WHERE AlbumId = 350", function (error
 });
 */
 
+/*
 database.run("UPDATE Album SET AlbumId = 352 WHERE AlbumId = 351", function (error) {
     if (error) {
         console.log(`Failed to update rows to Album table: ${error.message}`);
@@ -117,6 +118,25 @@ database.run("UPDATE Album SET AlbumId = 352 WHERE AlbumId = 351", function (err
         console.log("Successfully updated rows in Album table.");
     }
 });
+*/
+
+database.run("DELETE FROM Album WHERE ArtistId = 276", function (error) {
+    if (error) {
+        console.log(`Failed to delete John Farnham albums in Album table: ${error.message}`);
+    } else {
+        console.log("Successfully deleted John Farnham albums in Album table.");
+    }
+});
+
+database.run("DELETE FROM Artist WHERE ArtistId = 276", function (error) {
+    if (error) {
+        console.log(`Failed to delete John Farnham from Artist table: ${error.message}`);
+    } else {
+        console.log("Successfully deleted John Farnham from Artist table.");
+    }
+});
+
+
 
 
 database.close();
