@@ -41,4 +41,12 @@ database.all("SELECT * FROM Album WHERE Title LIKE '%One%'", function (error, ro
     }
 });
 
+database.each("SELECT TrackId, Name, Composer FROM Track", function (error, row) {
+    if (error) {
+        console.log(`Failed to retrieve a row from Track table: ${error.message}`);
+    } else {
+        console.log(`Track with ID ${row.TrackId} is ${row.Name} by ${row.Composer}`);
+    }
+});
+
 database.close();
