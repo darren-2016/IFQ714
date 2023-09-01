@@ -8,6 +8,7 @@ let database = new sqlite3.Database("Chinook_Sqlite.sqlite", function(error) {
     }
 });
 
+/*
 database.all("SELECT * FROM Album", function(error, rows) {
     if (error) {
         console.log(`Failed to retrieve rows from Album table: ${error.message}`);
@@ -58,5 +59,34 @@ database.get("SELECT * FROM Track WHERE Name LIKE '%Tree%'", function (error, ro
         console.log(`Track with ID ${row.TrackId} is ${row.Name} by ${row.Composer}`);
     }
 });
+*/
+
+/*
+database.run("INSERT INTO Artist VALUES (276, 'John Farnham')", function (error) {
+    if (error) {
+        console.log(`Failed to add John Farnham to Artist table: ${error.message}`);
+    } else {
+        console.log("Successfully added John Farnham to Artist table.");
+    }
+});
+*/
+
+/*database.run("INSERT INTO Album VALUES (348, 'Whispering Jack', 276), (349, 'Age of Reason', 276)", function (error) {
+    if (error) {
+        console.log(`Failed to add rows to Album table: ${error.message}`);
+    } else {
+        console.log("Successfully added Rows to Album table.");
+    }
+});
+*/
+
+database.run("INSERT INTO Album VALUES (350, 'Love Goes', 277)", function (error) {
+    if (error) {
+        console.log(`Failed to add rows to Album table: ${error.message}`);
+    } else {
+        console.log("Successfully added Rows to Album table.");
+    }
+});
+
 
 database.close();
