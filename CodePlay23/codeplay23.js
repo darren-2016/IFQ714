@@ -49,4 +49,14 @@ database.each("SELECT TrackId, Name, Composer FROM Track", function (error, row)
     }
 });
 
+database.get("SELECT * FROM Track WHERE Name LIKE '%Tree%'", function (error, row) {
+    if (error) {
+        console.log(`Failed to retrieve a row from Track table: ${error.message}`);
+    } else if (row === undefined) {
+        console.log("Could not find a Track with 'Tree' in the name.");
+    } else {
+        console.log(`Track with ID ${row.TrackId} is ${row.Name} by ${row.Composer}`);
+    }
+});
+
 database.close();
