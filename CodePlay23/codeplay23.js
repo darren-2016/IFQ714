@@ -8,4 +8,15 @@ let database = new sqlite3.Database("Chinook_Sqlite.sqlite", function(error) {
     }
 });
 
+database.all("SELECT * FROM Album", function(error, rows) {
+    if (error) {
+        console.log(`Failed to retrieve rows from Album table: ${error.message}`);
+    } else {
+        console.log(`Retrieved ${rows.length} rows from Album table.`);
+        rows.forEach(function (row) {
+            console.log(`${row.AlbumId} - ${row.Title}`);
+        });
+    }
+});
+
 database.close();
