@@ -29,4 +29,16 @@ database.all("SELECT * FROM Album WHERE AlbumId >= 100", function (error, rows) 
         });
     }
 });
+
+database.all("SELECT * FROM Album WHERE Title LIKE '%One%'", function (error, rows) {
+    if (error) {
+        console.log(`Failed to retrieve rows from Album table: ${error.message}`);
+    } else {
+        console.log(`Retrieved ${rows.length} rows from Album table.`);
+        rows.forEach(function (row) {
+            console.log(`${row.AlbumId} - ${row.Title}`);
+        });
+    }
+});
+
 database.close();
