@@ -21,3 +21,12 @@ stream.on("readable", function() {
 });
 stream.on("end", function() { stream.close(); });
 stream.on("error", function(error) { console.log(error.message); stream.close(); });
+
+// Stream file reading (flowing mode)
+let stream2 = fs.createReadStream("DataFiles/datafile.txt", "utf8");
+
+stream2.on("data", function(chunk) {
+    console.log(`Current chunk: ${chunk}`);
+});
+stream2.on("end", function() { stream2.close(); });
+stream2.on("error", function(error) { console.log(error.message); stream2.close(); });
