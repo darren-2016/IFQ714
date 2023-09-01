@@ -80,11 +80,41 @@ database.run("INSERT INTO Artist VALUES (276, 'John Farnham')", function (error)
 });
 */
 
+/*
 database.run("INSERT INTO Album VALUES (350, 'Love Goes', 277)", function (error) {
     if (error) {
         console.log(`Failed to add rows to Album table: ${error.message}`);
     } else {
         console.log("Successfully added Rows to Album table.");
+    }
+});
+*/
+
+/*
+database.run("UPDATE Album SET Title = 'Chain Reaction', ArtistId = 276 WHERE AlbumId = 350", function (error) {
+    if (error) {
+        console.log(`Failed to update rows to Album table: ${error.message}`);
+    } else {
+        console.log("Successfully updated rows in Album table.");
+    }
+});
+*/
+
+/*
+database.run("UPDATE Album SET AlbumId = 1 WHERE AlbumId = 350", function (error) {
+    if (error) {
+        console.log(`Failed to update rows to Album table: ${error.message}`);
+    } else {
+        console.log("Successfully updated rows in Album table.");
+    }
+});
+*/
+
+database.run("UPDATE Album SET AlbumId = 352 WHERE AlbumId = 351", function (error) {
+    if (error) {
+        console.log(`Failed to update rows to Album table: ${error.message}`);
+    } else {
+        console.log("Successfully updated rows in Album table.");
     }
 });
 
