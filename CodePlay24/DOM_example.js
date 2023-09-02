@@ -1,7 +1,7 @@
 window.onload = function () {
     document.getElementById("colourSelect").addEventListener("change", changeColour);
     document.getElementById("addElementButton").addEventListener("click", addElement);
-    //document.getElementById("removeElementButton").addEventListener("click", removeElement);
+    document.getElementById("removeElementButton").addEventListener("click", removeElement);
 }
 
 
@@ -23,4 +23,9 @@ function addElement() {
     let sideTwo = document.getElementById("sideTwo");
     newElement.textContent = `Newly added element ${sideTwo.children.length}`;
     sideTwo.appendChild(newElement);
+}
+
+function removeElement() {
+    let sideTwo = document.getElementById("sideTwo");
+    sideTwo.removeChild(sideTwo.lastElementChild);
 }
