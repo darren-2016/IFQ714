@@ -1,6 +1,6 @@
 window.onload = function () {
     document.getElementById("colourSelect").addEventListener("change", changeColour);
-    //document.getElementById("addElementButton").addEventListener("click", addElement);
+    document.getElementById("addElementButton").addEventListener("click", addElement);
     //document.getElementById("removeElementButton").addEventListener("click", removeElement);
 }
 
@@ -16,4 +16,11 @@ function changeColour(event) {
             elements[i].setAttribute("style", `color:${colour}`);
         }
     }
+}
+
+function addElement() {
+    let newElement = document.createElement("p");
+    newElement.textContent = "Newly added element";
+    let sideTwo = document.getElementById("sideTwo");
+    sideTwo.appendChild(newElement);
 }
