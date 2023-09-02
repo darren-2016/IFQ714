@@ -5,12 +5,15 @@ window.onload = function () {
 }
 
 
+
 function changeColour(event) {
     let colour = event.target.value;
-    let sideOne = document.getElementById("sideOne");
-    let paragraphs = sideOne.getElementsByTagName("p");
-    //sideOne.setAttribute("style", `flex:1; color:${colour}`);
-    for (let i = 0; i < paragraphs.length; i++) {
-        paragraphs[i].setAttribute("style", `color:${colour}`);
+    let elements = document.getElementsByClassName("sideOne");
+    for (let i = 0; i < elements.length; i++) {
+        if (elements[i].getAttribute("style").includes("flex:1")) {
+            elements[i].setAttribute("style", `flex:1; color:${colour}`);
+        } else {
+            elements[i].setAttribute("style", `color:${colour}`);
+        }
     }
 }
