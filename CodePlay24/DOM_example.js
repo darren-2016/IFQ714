@@ -20,7 +20,7 @@ function changeColour(event) {
 
 function addElement() {
     let newElement = document.createElement("p");
-    newElement.textContent = "Newly added element";
     let sideTwo = document.getElementById("sideTwo");
+    newElement.textContent = `Newly added element ${sideTwo.children.length}`;
     sideTwo.appendChild(newElement);
 }
