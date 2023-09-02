@@ -27,5 +27,7 @@ function addElement() {
 
 function removeElement() {
     let sideTwo = document.getElementById("sideTwo");
-    sideTwo.removeChild(sideTwo.lastElementChild);
+    if (sideTwo.lastElementChild.tagName.toLowerCase() === "p") {
+        sideTwo.removeChild(sideTwo.lastElementChild);
+    }
 }
