@@ -16,18 +16,23 @@ function changeColour(event) {
             elements[i].setAttribute("style", `color:${colour}`);
         }
     }
+    alert(`Colour changed to ${colour} for side one!`);
 }
 
 function addElement() {
     let newElement = document.createElement("p");
     let sideTwo = document.getElementById("sideTwo");
-    newElement.textContent = `Newly added element ${sideTwo.children.length}`;
+    let text = prompt("Enter text for the new element:");
+    newElement.textContent = text === null ? `Newly added element ${sideTwo.children.length}` : text;
+    // newElement.textContent = `Newly added element ${sideTwo.children.length}`;
     sideTwo.appendChild(newElement);
 }
 
 function removeElement() {
     let sideTwo = document.getElementById("sideTwo");
     if (sideTwo.lastElementChild.tagName.toLowerCase() === "p") {
-        sideTwo.removeChild(sideTwo.lastElementChild);
+        if (confirm("Are you sure you want to remove an element?")) {
+            sideTwo.removeChild(sideTwo.lastElementChild);
+        }
     }
 }
