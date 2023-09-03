@@ -2,8 +2,10 @@ window.onload = function () {
     document.getElementById("colourSelect").addEventListener("change", changeColour);
     document.getElementById("addElementButton").addEventListener("click", addElement);
     document.getElementById("removeElementButton").addEventListener("click", removeElement);
+    document.getElementById("openWindowButton").addEventListener("click", openWindow);
+    document.getElementById("moveWindowButton").addEventListener("click", moveWindow);
+    document.getElementById("closeWindowButton").addEventListener("click", closeWindow);
 }
-
 
 
 function changeColour(event) {
@@ -34,5 +36,43 @@ function removeElement() {
         if (confirm("Are you sure you want to remove an element?")) {
             sideTwo.removeChild(sideTwo.lastElementChild);
         }
+    }
+}
+
+let newWindow = null;
+const width = 640;
+const height = 480;
+function openWindow() {
+    if (newWindow === null || newWindow.closed) {
+        newWindow = window.open("https://www.lipsum.com/", null, `width=${width}, height=${height}`);
+    }
+}
+
+function moveWindow() {
+    if (newWindow !== null && !newWindow.closed) {
+        const buffer = 100;
+ 
+        // Get the height and width in case the window has changed size.
+        const currentWidth = newWindow.outerWidth;
+        const currentHeight = newWindow.outerHeight;
+ 
+        // Get the height and width of the screen.
+        const screenWidth = screen.width;
+        const screenHeight = screen.height;
+ 
+        // Generate a random number within the bounds we want
+        const randWidth = buffer+Math.random()*(screenWidth-currentWidth-buffer*2);
+        const randHeight = buffer+Math.random()*(screenHeight-currentHeight-buffer*2);
+ 
+        // Use abs to make sure it's an integer.
+        newWindow.moveTo(Math.abs(randWidth), Math.abs(randHeight));
+        newWindow.focus();
+    }
+}
+
+function closeWindow() {
+    if (newWindow !== null && !newWindow.closed) {
+        newWindow.close();
+        newWindow = null;
     }
 }
