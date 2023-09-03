@@ -5,6 +5,9 @@ window.onload = function () {
     document.getElementById("openWindowButton").addEventListener("click", openWindow);
     document.getElementById("moveWindowButton").addEventListener("click", moveWindow);
     document.getElementById("closeWindowButton").addEventListener("click", closeWindow);
+    document.getElementById("informationButton").addEventListener("click", showInfo);
+    document.getElementById("backButton").addEventListener("click", function() { history.back(); });
+    document.getElementById("forwardButton").addEventListener("click", function() { history.forward(); });
 }
 
 
@@ -75,4 +78,18 @@ function closeWindow() {
         newWindow.close();
         newWindow = null;
     }
+}
+
+function showInfo() {
+    const protocol = location.protocol;
+    const host = location.hostname;
+    const path = location.pathname;
+    const agent = navigator.userAgent;
+    const language = navigator.language;
+    const cookie = navigator.cookieEnabled;
+    const pdf = navigator.pdfViewerEnabled;
+
+    alert(`URL details: \nCurrent page protocol is ${protocol}. \nCurrent page host is ${host}. \nCurrent page path is ${path}.
+    \n\nBrowser details: \nReported user agent is ${agent}. \nCurrent language is ${language}. \nAre cookies enabled? ${cookie}. \nCan PDFs be viewed in the browser? ${pdf}.`);
+
 }
